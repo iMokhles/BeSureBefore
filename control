@@ -1,0 +1,11 @@
+Package: com.imokhles.besurebefore
+Name: BeSureBefore
+Depends: mobilesubstrate
+Version: 1.0
+Conflicts: com.idevicelover.confirm2proceed
+Architecture: iphoneos-arm
+Description: avoid proceed operations mistakenly.
+Maintainer: iMokhles
+Author: iMokhles
+Section: Tweaks
+Icon: file:///Library/PreferenceBundles/BeSureBeforePrefs.bundle/BeSureBeforePrefs.png

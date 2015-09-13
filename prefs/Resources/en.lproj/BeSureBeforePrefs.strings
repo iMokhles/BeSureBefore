@@ -1,0 +1,31 @@
+"SOUND_FOOTER" = "play sound and get a vibraton while you getting warning";
+"FBM_FOOTER" = "avoid you from send audio message";
+"WHATS_FOOTER" = "avoid you from call friends mistakenly";
+"BBM_FOOTER" = "avoid you from call friends mistakenly";
+"TWET_FOOTER" = "avoid you from favourites tweets mistakenly";
+"SKYP_FOOTER" = "avoid you from call friends mistakenly";
+"INSTA_FOOTER" = "avoid you from likes photos/videos mistakenly [Supports DoubleTaps]";
+"FACETIME_FOOTER" = "avoid you from call friends mistakenly";
+"PHONE_FOOTER" = "avoid you from call friends mistakenly";
+"MAIL_FOOTER" = "avoid you from send email mistakenly";
+"VIBER_FOOTER" = "avoid you from call friends mistakenly";
+"SMS_FOOTER" = "avoid you from send messages mistakenly";
+
+"Enable Sound" = "Enable Sound";
+"Viberation" = "Viberation";
+"FBMessanger" = "FBMessanger";
+"WhatsApp" = "WhatsApp";
+"BBM" = "BBM";
+"TweetBot3" = "TweetBot3";
+"Skype" = "Skype";
+"Instagram" = "Instagram";
+"FaceTime" = "FaceTime";
+"Phone" = "Phone";
+"Mail" = "Mail";
+"Viber" = "Viber";
+"SMS" = "SMS";
+
+"VERSION" = "Version:";
+"IMOKHLES" = "Follow Me! @iMokhles";
+"IMOKHLESSITE" = "Visit My iMokhles.com";
+"DONATETO" = "Donate";

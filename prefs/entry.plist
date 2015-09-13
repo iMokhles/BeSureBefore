@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = BeSureBeforePrefs;
+	cell = PSLinkCell;
+	detail = BeSureBeforePrefsListController;
+	icon = BeSureBeforePrefs.png;
+	isController = 1;
+	label = BeSureBefore;
+    };
+}
