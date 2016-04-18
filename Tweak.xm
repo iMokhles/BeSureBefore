@@ -1,99 +1,4 @@
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#include <sys/cdefs.h>
-#include <substrate.h>
-#include <notify.h>
-#import <AudioToolbox/AudioToolbox.h>
-
-// Apllications IDS
-#define BBM_ID @"com.blackberry.bbm1"
-#define INSTAGRAM_ID @"com.burbn.instagram"
-#define FBM_ID @"com.facebook.Messenger"
-#define VIBER_ID @"com.viber"
-#define APSMS_ID @"com.apple.MobileSMS"
-#define TWTBOT_ID @"com.tapbots.Tweetbot3"
-#define FTIME_ID @"com.apple.facetime"
-#define MMAIL_ID @"com.apple.mobilemail"
-#define SKYPE_ID @"com.skype.skype"
-#define MPHONE_ID @"com.apple.mobilephone"
-#define WHATSAPP_ID @"net.whatsapp.WhatsApp"
-
-// Settings
-#define GET_BOOL(key, default) (prefs[key] ? ((NSNumber *)prefs[key]).boolValue : default)
-#define GET_FLOAT(key, default) (prefs[key] ? ((NSNumber *)prefs[key]).floatValue : default)
-#define GET_INT(key, default) (prefs[key] ? ((NSNumber *)prefs[key]).intValue : default)
-#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-
-static NSString *const kASKPrefsPath = @"/var/mobile/Library/Preferences/com.imokhles.besurebeforeprefs.plist";
-// Settings Keys
-static NSString *const kSMSAskKey = @"smsASK";
-static NSString *const kBBMAskKey = @"bbmASK";
-static NSString *const kFTAskKey = @"ftASK";
-static NSString *const kINSTAskKey = @"instaASK";
-static NSString *const kFBMAskKey = @"fbmASK";
-static NSString *const kVIBRAskKey = @"viberASK";
-static NSString *const kTWTBOTAskKey = @"twtbotASK";
-static NSString *const kMAILAskKey = @"mailASK";
-static NSString *const kSKYAskKey = @"skypeASK";
-static NSString *const kPHONEAskKey = @"phoneASK";
-static NSString *const kWHATSAskKey = @"whatsASK";
-
-// Advanced Settings Keys
-static NSString *const kSoundAskKey = @"soundASK";
-static NSString *const kVIBAskKey = @"vibASK";
-
-// Advanced Options
-static BOOL soundAlertBOOL = NO;
-static BOOL vibraAlertBOOL = NO;
-
-// SMS Options
-static BOOL smsASKBOOL = NO;
-
-// FaceTime Options
-static BOOL ftASKBOOL = NO;
-
-// WhatsApp Options
-static BOOL whatsASKBOOL = NO;
-
-// Phone Options
-static BOOL phoneASKBOOL = NO;
-
-// Viber Options
-static BOOL viberASKBOOL = NO;
-
-// FBMessanger Options
-static BOOL fbmASKBOOL = NO;
-
-// Mail Options
-static BOOL mailASKBOOL = NO;
-
-// Skype Options
-static BOOL skypeASKBOOL = NO;
-
-// Instagram Options
-static BOOL instaASKBOOL = NO;
-
-// TweetBot Options
-static BOOL twtbotASKBOOL = NO;
-
-// BBM Options
-static BOOL bbmASKBOOL = NO;
-
-// MY BOOL
-static BOOL besureBeforeConfirmed = NO;
-
-static BOOL isFirstRun;
-
-@interface AVAudioPlayer : NSObject
-{}
-@property int numberOfLoops;
-@property float volume;
-- (BOOL)play;
-- (id)initWithData:(id)arg1 error:(id *)arg2;
-@end
-
-@interface BeSureBeforeClass : NSObject <UIAlertViewDelegate>
-@end
+#include "Tweak.h"
 
 @implementation BeSureBeforeClass
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -587,81 +492,64 @@ static BOOL isFirstRun;
 #pragma mark - Preferences
 
 void ASKLoadPrefs() {
-	// testing
 
-	// system ("killall Messanger");
-	// system ("killall WhatsApp");
-	// //system ("killall FaceTime");
-	// //system ("killall MobilePhone");
-	// system ("killall Skype");
-	// system ("killall BBM");
-	// system ("killall Viber");
-	// system ("killall Tweetbot");
-	// system ("killall Instagram");
-	// system ("killall Mail");
-	// system ("killall MobileSMS");
-
-	NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:kASKPrefsPath];
-	soundAlertBOOL = 	  GET_BOOL(kSoundAskKey, NO);
-	vibraAlertBOOL = 	  GET_BOOL(kVIBAskKey, NO);
-	smsASKBOOL = GET_BOOL(kSMSAskKey, NO);
-	whatsASKBOOL = GET_BOOL(kWHATSAskKey, NO);
-	ftASKBOOL = GET_BOOL(kFTAskKey, NO);
-	phoneASKBOOL = GET_BOOL(kPHONEAskKey, NO);
-	bbmASKBOOL = GET_BOOL(kBBMAskKey, NO);
-	skypeASKBOOL = GET_BOOL(kSKYAskKey, NO);
-	instaASKBOOL = GET_BOOL(kINSTAskKey, NO);
-	mailASKBOOL = GET_BOOL(kMAILAskKey, NO);
-	twtbotASKBOOL = GET_BOOL(kTWTBOTAskKey, NO);
-	fbmASKBOOL = GET_BOOL(kFBMAskKey, NO);
-	viberASKBOOL = GET_BOOL(kVIBRAskKey, NO);
+	NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:ASKPREFSPATH];
+	soundAlertBOOL = GET_BOOL(SOUNDASKKEY, NO);
+	vibraAlertBOOL = GET_BOOL(VIBASKKEY, NO);
+	smsASKBOOL = GET_BOOL(SMSASKKEY, NO);
+	whatsASKBOOL = GET_BOOL(WHATSASKKEY, NO);
+	ftASKBOOL = GET_BOOL(FTASKKEY, NO);
+	phoneASKBOOL = GET_BOOL(PHONEASKKEY, NO);
+	bbmASKBOOL = GET_BOOL(BBMASKKEY, NO);
+	skypeASKBOOL = GET_BOOL(SKYASKKEY, NO);
+	instaASKBOOL = GET_BOOL(INSTASKKEY, NO);
+	mailASKBOOL = GET_BOOL(MAILASKKEY, NO);
+	twtbotASKBOOL = GET_BOOL(TWTBOTASKKEY, NO);
+	fbmASKBOOL = GET_BOOL(FBMASKKEY, NO);
+	viberASKBOOL = GET_BOOL(VIBRASKKEY, NO);
 
 	if (!prefs) {
 		isFirstRun = YES;
 		%init(FirstRun);
 
-		[@{} writeToFile:kASKPrefsPath atomically:YES];
+		[@{} writeToFile:ASKPREFSPATH atomically:YES];
 	}
 }
 %ctor {
 	%init;
 	ASKLoadPrefs();
-	// NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
 	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:WHATSAPP_ID]) {
 	 	%init(WhatsApp);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:APSMS_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:APSMS_ID]) {
 	 	%init(SMS);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:FTIME_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:FTIME_ID]) {
 	 	%init(FaceTime);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:MPHONE_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:MPHONE_ID]) {
 	 	%init(Phone);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:VIBER_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:VIBER_ID]) {
 	 	%init(Viber);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:FBM_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:FBM_ID]) {
 	 	%init(FBMessanger);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:MMAIL_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:MMAIL_ID]) {
 	 	%init(Mail);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:SKYPE_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:SKYPE_ID]) {
 	 	%init(Skype);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:INSTAGRAM_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:INSTAGRAM_ID]) {
 	 	%init(Instagram);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:TWTBOT_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:TWTBOT_ID]) {
 	 	%init(TweetBot);
 	 }
-	 if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:BBM_ID]) {
+	 else if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:BBM_ID]) {
 	 	%init(BBM);
 	 }
 	 CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)ASKLoadPrefs, CFSTR("com.imokhles.besurebeforeprefs/ReloadPrefs"), NULL, kNilOptions);
 }
-
-
-

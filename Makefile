@@ -1,4 +1,4 @@
-include theos/makefiles/common.mk
+include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = BeSureBefore
 BeSureBefore_FILES = Tweak.xm $(wildcard *.m)
@@ -8,5 +8,5 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::
 	install.exec "killall -9 SpringBoard"
-SUBPROJECTS += besurebeforeprefs
+SUBPROJECTS += prefs
 include $(THEOS_MAKE_PATH)/aggregate.mk
